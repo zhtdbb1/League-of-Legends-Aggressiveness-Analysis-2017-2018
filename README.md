@@ -7,7 +7,7 @@ Date:11/17/2023
 
 ---
 
-## Introduction
+### Introduction
 As a silver top player in League of Legends, I always wonder whether I should be more aggressive so that I can win more games. However, it's quite impossible to get all the data ofrank games around the world. With that question, we will explore the dataset of records of all League of Legends professional games in 2018 from oracleselixir.com instead.
 
 In the first section, I will clean and explore the data, which involves in Univariateanalysis, Bivariate analysis and conditional distribution. 
@@ -34,15 +34,51 @@ relates to our question, which are:
 
 ## Cleaning and EDA
 
+### Data Cleaning
+We only need columns that relates to "**aggresiveness**" , and are just interested in an overall performance of a player, which means we dont need to know who the 
+opponents are. Also we need to create new columns to numerize "**aggressiveness**" and do some normalization to calculate columns with different means and standard deviations.
+The steps are:
+1. Select only the rows that represent top players.
+2. Select only the columns we need: `result`, `kills`, `deaths`, `assists`, `cspm`,
+`dpm`, `teamname`
+3. Create a new column which is a indicator of participation of a player in team fights called `kda`. Calculated by `kills` + `deaths` + `assists`.
+4. Change `result`'s data type to boolean.
+5. Use mean normalization on cspm, dpm and kda to create new columns `cspm_normalized`, `dmp_normalized` and `kda_normalized`. Then drop `kills`, `deaths` and `assists`.
+6. Make a new column for our statistic "agressiveness", using `dpm_normalized` - `cspm_normalized` + `kda_nomalized`
+in terms of agressiveness, a higher value of cspm_normalized is totally opposite to "pure agressiveness",
+since  a high cspm and a dpm value cannot singely prove that this player is more agressive, maybe this player is
+#just better than the others.
+thats why we need to  subtract dpm_normalized by cspm_normalized.
+#We also need to add kda_normalized, since the kda here is not traditional kda, it is a indicator to the participation 
+in fights.
+All together, calculate (dpm_normalized - cspm_normalized) + kda_nomalized
+
+***Note1***: `kda` is **NOT** the traditional kda calculated by (k+a) / d. In our dataframe, `kda` is calculated by (k+d+a) since deaths is a positive factor in terms of "**aggressiveness**".
+
+***Note2***: In terms of "**agressiveness**", a higher value of cspm_normalized is totally opposite to "**pure agressiveness**",since  a high cspm and a dpm value cannot singely prove that this player is more agressive, maybe this player is
+just better than the others.Thats why we need to  subtract dpm_normalized by cspm_normalized.
+
+Here is the cleaned dataframe with first five rows:
+
+
+
+|   cspm |     dpm |   kda |   cspm_normalized |   dpm_normalized |   kda_normalized | result   | teamname        |   agressiveness |
+|-------:|--------:|------:|------------------:|-----------------:|-----------------:|:---------|:----------------|----------------:|
+| 6.8848 | nan     |    19 |        -1.24423   |     nan          |         2.0578   | False    | JD Gaming       |      nan        |
+| 8.8483 | nan     |    19 |         0.343248  |     nan          |         2.0578   | True     | Invictus Gaming |      nan        |
+| 9.7349 | 380.458 |    14 |         1.06006   |      -0.236077   |         0.985075 | True     | Invictus Gaming |       -0.31106  |
+| 8.3373 | 417.253 |    10 |        -0.0698915 |      -0.00923238 |         0.126891 | False    | JD Gaming       |        0.18755  |
+| 8.7887 | 469.606 |     5 |         0.295062  |       0.313524   |        -0.945838 | False    | Bilibili Gaming |       -0.927375 |
+
 <iframe src="assets/10-80-enrollment.html" width=800 height=600 frameBorder=0></iframe>
-```py
-print(counts[['Quarter', 'Count']].head().to_markdown(index=False))
-```
+
+
+
 
 
 ---
 
-## Assessment of Missingness
+### Assessment of Missingness
 
 Here's what a Markdown table looks like. Note that the code for this table was generated _automatically_ from a DataFrame, using
 
