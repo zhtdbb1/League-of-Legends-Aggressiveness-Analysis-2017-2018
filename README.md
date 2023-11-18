@@ -1,13 +1,14 @@
+
 Student: Haotian Zhu
-Course: DSC80 - Fall 2023
 Instructor: Sam Lau
+Date:11/17/2023
 
 ---
 
 ## Introduction
 
 In this project, we studied the effectiveness of spice challenges in building team morale.
-***Note***: If adasdda
+***Note***: If you choose a repo name and title as uninspired as the ones here, I will be quite sad.
 
 ---
 
