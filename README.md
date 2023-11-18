@@ -78,7 +78,8 @@ Here is the cleaned dataframe with first five rows:
 
 Here's what a Markdown table looks like. Note that the code for this table was generated _automatically_ from a DataFrame, using
 
-<iframe src="assets/fig0.html" width=800 height=600 frameBorder=0></iframe>
+
+<iframe src="assets/fig0.html" width=1040 height=720 frameBorder=0></iframe>
 
 ---
 
