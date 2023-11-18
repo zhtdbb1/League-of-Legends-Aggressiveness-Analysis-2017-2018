@@ -185,6 +185,8 @@ Test Statistic: Difference in mean. (`meanW` - `meanL`) where meanW is the mean 
 
 Significance Level: 0.05
 
+Simulations: 10000
+
 p-value: 0.0
 
 <iframe src="assets/fig6.html" width=1040 height=720 frameBorder=0></iframe>
