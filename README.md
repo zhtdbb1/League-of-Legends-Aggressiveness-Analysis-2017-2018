@@ -1,14 +1,13 @@
-# League of Legends Aggressiveness Analysis 2017-2018
 Student: Haotian Zhu
-
-
-***Note***: If you choose a repo name and title as uninspired as the ones here, I will be quite sad.
+Course: DSC80 - Fall 2023
+Instructor: Sam Lau
 
 ---
 
 ## Introduction
 
 In this project, we studied the effectiveness of spice challenges in building team morale.
+***Note***: If adasdda
 
 ---
 
