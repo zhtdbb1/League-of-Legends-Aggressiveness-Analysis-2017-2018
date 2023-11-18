@@ -8,7 +8,7 @@ Date:11/17/2023
 ---
 
 ### Introduction
-As a silver top player in League of Legends, I always wonder whether I should be more aggressive so that I can win more games. However, it's quite impossible to get all the data ofrank games around the world. With that question, we will explore the dataset of records of all League of Legends professional games in 2018 from oracleselixir.com instead.
+As a silver top player in League of Legends, I always wonder whether I should be more aggressive so that I can win more games. However, it's quite impossible to get all the data of rank games around the world. With that question, we will explore the dataset of records of all League of Legends **Professional** games in 2018 from oracleselixir.com instead.
 
 In the first section, I will clean and explore the data, which involves in Univariateanalysis, Bivariate analysis and conditional distribution. 
 
@@ -45,18 +45,14 @@ The steps are:
 4. Change `result`'s data type to boolean.
 5. Use mean normalization on cspm, dpm and kda to create new columns `cspm_normalized`, `dmp_normalized` and `kda_normalized`. Then drop `kills`, `deaths` and `assists`.
 6. Make a new column for our statistic "agressiveness", using `dpm_normalized` - `cspm_normalized` + `kda_nomalized`
-in terms of agressiveness, a higher value of cspm_normalized is totally opposite to "pure agressiveness",
-since  a high cspm and a dpm value cannot singely prove that this player is more agressive, maybe this player is
-#just better than the others.
-thats why we need to  subtract dpm_normalized by cspm_normalized.
-#We also need to add kda_normalized, since the kda here is not traditional kda, it is a indicator to the participation 
-in fights.
-All together, calculate (dpm_normalized - cspm_normalized) + kda_nomalized
+
 
 ***Note1***: `kda` is **NOT** the traditional kda calculated by (k+a) / d. In our dataframe, `kda` is calculated by (k+d+a) since deaths is a positive factor in terms of "**aggressiveness**".
 
 ***Note2***: In terms of "**agressiveness**", a higher value of cspm_normalized is totally opposite to "**pure agressiveness**",since  a high cspm and a dpm value cannot singely prove that this player is more agressive, maybe this player is
 just better than the others.Thats why we need to  subtract dpm_normalized by cspm_normalized.
+
+Total rows and columns of cleaned dataframe: (13484, 9)
 
 Here is the cleaned dataframe with first five rows:
 
@@ -70,7 +66,7 @@ Here is the cleaned dataframe with first five rows:
 | 8.3373 | 417.253 |    10 |        -0.0698915 |      -0.00923238 |         0.126891 | False    | JD Gaming       |        0.18755  |
 | 8.7887 | 469.606 |     5 |         0.295062  |       0.313524   |        -0.945838 | False    | Bilibili Gaming |       -0.927375 |
 
-<iframe src="assets/10-80-enrollment.html" width=800 height=600 frameBorder=0></iframe>
+
 
 
 
@@ -82,17 +78,7 @@ Here is the cleaned dataframe with first five rows:
 
 Here's what a Markdown table looks like. Note that the code for this table was generated _automatically_ from a DataFrame, using
 
-```py
-print(counts[['Quarter', 'Count']].head().to_markdown(index=False))
-```
-
-| Quarter     |   Count |
-|:------------|--------:|
-| Fall 2020   |       3 |
-| Winter 2021 |       2 |
-| Spring 2021 |       6 |
-| Summer 2021 |       4 |
-| Fall 2021   |      55 |
+<iframe src="assets/10-80-enrollment.html" width=800 height=600 frameBorder=0></iframe>
 
 ---
 
