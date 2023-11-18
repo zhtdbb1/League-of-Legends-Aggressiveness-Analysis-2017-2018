@@ -67,14 +67,41 @@ Here is the cleaned dataframe with first five rows:
 | 8.7887 | 469.606 |     5 |         0.295062  |       0.313524   |        -0.945838 | False    | Bilibili Gaming |       -0.927375 |
 
 
+### Univariate Analysis
+
+<iframe src="assets/fig0.html" width=1040 height=720 frameBorder=0></iframe>
 
 
+***Note***:Please note that the kda here is k+d+a which is an indicator of agressiveness, namely consequences of fights.
+
+This figure is the probability density distribution of `kda` column. We noticed that the distribution is right skewed,centered at 7, if k,d and a are uniformaly distributed, that will result in a score of 2.3/2.3/2.3, this is far less than our k+d+a per game if you play league of legends. According to this, we can temporarily conclude that professional players tend to not kill and die a lot relatively to players in normal/rank.
+
+
+
+<iframe src="assets/fig1.html" width=1040 height=720 frameBorder=0></iframe>
+
+This boxplot is the distribution of `agressiveness` column of all professional top players in 2018. The value itself measures the degree of agressiveness, as we can see it follows a normal distribution with mean=-0.00015965334569114305,std= 1.9413459791823955.It can be used as a part of our test statistics in the hypothesis part.
+
+
+### Bivariate Analysis
+
+<iframe src="assets/fig2.html" width=1040 height=720 frameBorder=0></iframe>
+
+This is a conditioned boxplot that visualize `aggressiveness` when the game result is False and True respectively. By looking into the distribution of difference of agressiveness, we observed that the distribution of agressiveness when players win the game is slightly higher than the agressiveness when people lose the game. However we still don't know
+if this is due to random chance, it needs to be investigate more in the hypothesis test part.
+
+
+
+<iframe src="assets/fig3.html" width=1040 height=720 frameBorder=0></iframe>
+
+Here is a 3-D graph visualizing the distribution of `cspm`, `dpm` and `kda`,colored by game `result`.
+We can also perform Principal component Analysis on this one, but not today XD! and the first PC might be in the direction of positive side of the 3 variables.
 
 
 
 ---
 
-### Assessment of Missingness
+## Assessment of Missingness
 
 Here's what a Markdown table looks like. Note that the code for this table was generated _automatically_ from a DataFrame, using
 
