@@ -118,6 +118,8 @@ of a team(not every position have substitutes of a team, so we will not count su
 | Panathinaikos AC eSports | 1.6988  | -1.47412  |
 
 
+
+
 | teamname       |     False |    True |
 |:---------------|----------:|--------:|
 | Team Echo Zulu | -1.1561   | 6.09036 |
@@ -141,7 +143,7 @@ and Team Echo Zulu's top is the most aggressive top player in a winning game.
 According to the data generating process, I don't think there is any NMAR column in my dataset, but columns like `cspm` or `dpm` in the dataset might be NMAR if this data is collected directly from players, since some players may not want to report their 'cspm' if it is too low. However, I believe this dataset is collected from the recordings, that means all the values has the true value, you can determine anything just by looking at the video,which is not a personal choice. Under this assumption, we can add a column 'isLaner', the value is true if the player is a top/mid/adc, false for jg/sup. Then the column will be MAR because jg/sup doesn't focus on lasthit, they will be less likely to report cspm.
 
 ### Missingness Dependency
-This part, we are going to perform permutation tests on `dpm` column, conditioned on `result` and `league` respectively and see it is MCAR or MAR. `League` column is just like its name,(eg. LPL, LCK, Dcup...).
+This part, we are going to perform permutation tests on `dpm` column, conditioned on `result` and `league` respectively and see it is MCAR or MAR. `league` column is just like its name,(eg. LPL, LCK, Dcup...).
 
 > `dpm` conditioned on `league`
 
@@ -152,7 +154,7 @@ This part, we are going to perform permutation tests on `dpm` column, conditione
 - Test Statistics: TVD(Total Variation Distance) 
 - p-value: 0.0
 - Simulations: 1000
-- conclusion: Reject ASAP! Missingness of `dpm` does depend on `league`.(For your information, a lot of Chinese leagues like Dcup, LPL has missingness in `dpm`)
+- Conclusion: Reject ASAP! Missingness of `dpm` does depend on `league`.(For your information, a lot of Chinese leagues like Dcup, LPL has missingness in `dpm`)
 
 > `dpm` conditioned on `result`
 
